@@ -1,0 +1,12 @@
+{
+    "@@locale": "hi",
+   "Mobilenumber":"मोबाइल नंबर",
+   "Sendotp":"sendotp",
+   "register":"Register",
+   "otpverify":"OTP Verification",
+   "otpenter":"Enter the OTP sent to your phone",
+   "verify":"Verify",
+   "didntrecivecode":"Didn't receive code?",
+   "resend":"Resend"
+   
+}

@@ -1,0 +1,21 @@
+{
+    "@@locale": "en",
+   "Mobilenumber":"Mobile number",
+   "Sendotp":"Send OTP",
+   "register":"Register",
+   "otpverify":"OTP Verification",
+   "otpenter":"Enter the OTP sent to your phone",
+   "verify":"Verify",
+   "didntrecivecode":"Didn't receive code?",
+   "resend":"Resend",
+   "language":"Language",
+      "username":"User Name",
+            "whatsappno":"Whats App Number",
+      "notificationvia":"Notification Via",
+      "address1":"Address 1",
+      "viagoogle":"Via Google",
+      "address2":"Address 2",
+      "city":"City",
+      "country":"Country",
+      "zipcode":"Zip Code"
+     }

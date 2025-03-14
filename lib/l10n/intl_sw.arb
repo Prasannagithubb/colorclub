@@ -1,0 +1,21 @@
+{
+    "@@locale": "sw",
+   "Mobilenumber":"Weka Nambari ya Simu",
+   "Sendotp":"Send OTP",
+   "register":"Sajili",
+   "otpverify":"Uthibitishaji wa OTP",
+   "otpenter":"Ingiza OTP iliyotumwa kwa simu yako",
+   "verify":"Verify",
+   "didntrecivecode":"Hukupokea nambari ya kuthibitisha?",
+   "resend":"Tuma tena",
+   "language":"Lugha",
+    "username":"Jina la mtumiaji",
+    "whatsappno":"Nambari ya Whats App",
+      "notificationvia":"Taarifa Kupitia",
+      "address1":"Anwani 1",
+      "viagoogle":"Kupitia Google",
+      "address2":"Anwani 2",
+      "city":"Jiji",
+      "country":"Nchi",
+      "zipcode":"Msimbo wa Eneo"
+     }
