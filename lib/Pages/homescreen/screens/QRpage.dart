@@ -4,7 +4,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:new_one/Pages/homescreen/scanpoints.dart';
+import 'package:new_one/Controller/scancontroller/scancontroller.dart';
+import 'package:new_one/Pages/coupindetails/couponservice.dart';
+import 'package:provider/provider.dart';
 
 class QRpage extends StatefulWidget {
   const QRpage({super.key});
@@ -69,14 +71,15 @@ class _QRpageState extends State<QRpage> {
         SnackBar(content: Text('Scanned QR Code: $_qrCode')),
       );
 
-      // Fetch scan points from API
-      int points = await _fetchScanPoints(_qrCode);
+      // ✅ Call the API to fetch coupon details
+      await context.read<Scancontroller>().scanapicall(_qrCode);
 
       // Navigate to Scanpoints page with the retrieved points
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => Scanpoints(points: points),
+          builder: (context) =>
+              QRPopupScreen(couponCode: _qrCode), // Pass scanned QR code
         ),
       );
     } else {

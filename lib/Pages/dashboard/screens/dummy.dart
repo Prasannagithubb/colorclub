@@ -25,8 +25,8 @@ class OTPVerificationScreen extends StatelessWidget {
                 ),
               ),
               child: const Text(
-                "Verify",
-                style: TextStyle(fontSize: 16, color: Colors.white),
+                "Verifyd",
+                style: TextStyle(fontSize: 16, color: Colors.amber),
               ),
             ),
           ],

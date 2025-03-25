@@ -70,9 +70,14 @@ class S {
     return Intl.message('Send OTP', name: 'Sendotp', desc: '', args: []);
   }
 
-  /// `Register`
-  String get register {
-    return Intl.message('Register', name: 'register', desc: '', args: []);
+  /// `New Register`
+  String get newregister {
+    return Intl.message(
+      'New Register',
+      name: 'newregister',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `OTP Verification`
@@ -174,6 +179,271 @@ class S {
   String get zipcode {
     return Intl.message('Zip Code', name: 'zipcode', desc: '', args: []);
   }
+
+  /// `Redeem`
+  String get redeem {
+    return Intl.message('Redeem', name: 'redeem', desc: '', args: []);
+  }
+
+  /// `Rewards`
+  String get rewards {
+    return Intl.message('Rewards', name: 'rewards', desc: '', args: []);
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message('Login', name: 'login', desc: '', args: []);
+  }
+
+  /// `Points`
+  String get points {
+    return Intl.message('Points', name: 'points', desc: '', args: []);
+  }
+
+  /// `Verification Sucessfull!`
+  String get verificationsucessfull {
+    return Intl.message(
+      'Verification Sucessfull!',
+      name: 'verificationsucessfull',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan Coupon`
+  String get scancoupon {
+    return Intl.message('Scan Coupon', name: 'scancoupon', desc: '', args: []);
+  }
+
+  /// `Redeem points`
+  String get redeempoints {
+    return Intl.message(
+      'Redeem points',
+      name: 'redeempoints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Transactions`
+  String get mytransactions {
+    return Intl.message(
+      'My Transactions',
+      name: 'mytransactions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Dealer Partner`
+  String get mydealerpartner {
+    return Intl.message(
+      'My Dealer Partner',
+      name: 'mydealerpartner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find Dealer`
+  String get finddealer {
+    return Intl.message('Find Dealer', name: 'finddealer', desc: '', args: []);
+  }
+
+  /// `Find Product`
+  String get findproduct {
+    return Intl.message(
+      'Find Product',
+      name: 'findproduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refer Customer`
+  String get refercustomer {
+    return Intl.message(
+      'Refer Customer',
+      name: 'refercustomer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product Complaints`
+  String get ProductComplaints {
+    return Intl.message(
+      'Product Complaints',
+      name: 'ProductComplaints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your OTP has been verified sucessfully`
+  String get yourotphasverifiedsucessfully {
+    return Intl.message(
+      'Your OTP has been verified sucessfully',
+      name: 'yourotphasverifiedsucessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `KYC`
+  String get kyc {
+    return Intl.message('KYC', name: 'kyc', desc: '', args: []);
+  }
+
+  /// `Continue`
+  String get continue1 {
+    return Intl.message('Continue', name: 'continue1', desc: '', args: []);
+  }
+
+  /// `Welcome to`
+  String get welcometo {
+    return Intl.message('Welcome to', name: 'welcometo', desc: '', args: []);
+  }
+
+  /// `Earn Points For Every Dollar Spent`
+  String get earnpointsforeverydollarspent {
+    return Intl.message(
+      'Earn Points For Every Dollar Spent',
+      name: 'earnpointsforeverydollarspent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `150 Points`
+  String get pointsaa {
+    return Intl.message('150 Points', name: 'pointsaa', desc: '', args: []);
+  }
+
+  /// `$10 reward`
+  String get rewardaa {
+    return Intl.message('\$10 reward', name: 'rewardaa', desc: '', args: []);
+  }
+
+  /// `reward Balance`
+  String get rewardbalance {
+    return Intl.message(
+      'reward Balance',
+      name: 'rewardbalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get Points`
+  String get getpoints {
+    return Intl.message('Get Points', name: 'getpoints', desc: '', args: []);
+  }
+
+  /// `Redeem Amount`
+  String get redeemamount {
+    return Intl.message(
+      'Redeem Amount',
+      name: 'redeemamount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Badge Level`
+  String get badgelevel {
+    return Intl.message('Badge Level', name: 'badgelevel', desc: '', args: []);
+  }
+
+  /// `Dealer`
+  String get dealer {
+    return Intl.message('Dealer', name: 'dealer', desc: '', args: []);
+  }
+
+  /// `Earn Points History`
+  String get earnpointshistory {
+    return Intl.message(
+      'Earn Points History',
+      name: 'earnpointshistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track All Points`
+  String get trackallpoints {
+    return Intl.message(
+      'Track All Points',
+      name: 'trackallpoints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `points To Cash Or Paints`
+  String get pointstocashorpaints {
+    return Intl.message(
+      'points To Cash Or Paints',
+      name: 'pointstocashorpaints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Redeem To White Goods`
+  String get redeemtowhitegoods {
+    return Intl.message(
+      'Redeem To White Goods',
+      name: 'redeemtowhitegoods',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Redeem Points History`
+  String get redeempointshistory {
+    return Intl.message(
+      'Redeem Points History',
+      name: 'redeempointshistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Benifit Of All Tier`
+  String get benifitofalltier {
+    return Intl.message(
+      'Benifit Of All Tier',
+      name: 'benifitofalltier',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Benifits`
+  String get viewbenifits {
+    return Intl.message(
+      'View Benifits',
+      name: 'viewbenifits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `user Points`
+  String get userpoints {
+    return Intl.message('user Points', name: 'userpoints', desc: '', args: []);
+  }
+
+  /// `Scanned QR Code`
+  String get scaneedqrcode {
+    return Intl.message(
+      'Scanned QR Code',
+      name: 'scaneedqrcode',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -182,7 +452,6 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'hi'),
       Locale.fromSubtags(languageCode: 'sw'),
     ];
   }

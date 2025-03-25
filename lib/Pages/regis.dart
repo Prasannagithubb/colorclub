@@ -67,7 +67,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ),
             const SizedBox(height: 20),
             _buildSectionTitle("GENERAL DETAILS"),
-            _buildTextField("FULL NAME", "Enter your full name"),
+            _buildTextField("FULL NAME11", "Enter your full name"),
             Row(
               children: [
                 Expanded(child: _buildButtonField("DATE OF BIRTH")),
@@ -116,30 +116,36 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   /// Builds a text input field
   Widget _buildTextField(String label, String hint) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-      child: TextFormField(
-        decoration: InputDecoration(
-          labelText: label,
-          labelStyle: const TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 12, color: Colors.blue),
-          hintText: hint,
-          hintStyle: const TextStyle(fontSize: 14, color: Colors.black),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Colors.black),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Colors.black),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Colors.blue, width: 2),
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+    return TextFormField(
+      decoration: InputDecoration(
+        isDense: true,
+        labelText: label,
+        labelStyle: const TextStyle(
+            fontWeight: FontWeight.bold, fontSize: 12, color: Colors.blue),
+        hintText: hint,
+        hintStyle: const TextStyle(fontSize: 14, color: Colors.black),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Colors.black),
         ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Colors.black),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Colors.blue, width: 2),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Colors.blue, width: 2),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Colors.blue, width: 2),
+        ),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
       ),
     );
   }

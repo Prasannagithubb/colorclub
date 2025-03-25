@@ -50,7 +50,7 @@ dependencies:
   lottie: ^3.2.0
   flutter_launcher_icons: ^0.14.3
   path_provider: ^2.1.5
-  mobile_scanner: ^6.0.6
+  mobile_scanner: ^5.1.0
   file_picker: ^9.0.2
   image_picker: ^1.1.2
   google_maps_flutter: ^2.10.1
@@ -60,6 +60,9 @@ dependencies:
   get: ^4.7.2
   http: ^1.3.0
   intl: ^0.19.0
+  audioplayers: ^6.4.0
+  url_launcher: ^6.3.1
+  uuid: ^4.5.1
   
  
  
@@ -103,21 +106,22 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+     - family: newasset
+       fonts:
+         - asset: assets/regi/RAGE_1.ttf
+         - asset: assets/regi/RAGE_1.ttf
+           style: italic
+     - family: bahnschrift
+       fonts:
+        - asset: assets/bahnschrift/bahnschrift.ttf
+        - asset: assets/bahnschrift/bahnschrift.ttf
+          style: italic
+          weight: 700
+  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
 flutter_intl:
   enabled: true
   arb_dir: lib/l10n
-  output_dir: lib/generated 
+  output_dir: lib/generated

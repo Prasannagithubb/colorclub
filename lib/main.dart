@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:new_one/Constant/AllRoutes.dart';
+import 'package:new_one/Controller/homecontroller.dart';
 import 'package:new_one/Controller/logincontroller/languagecontroller.dart';
 import 'package:new_one/Controller/logincontroller/logincontroller.dart';
-import 'package:new_one/Pages/redeem.dart';
-import 'package:new_one/Widgets/materialcolour.dart';
+import 'package:new_one/Controller/redeemcontroller/remaincontroller.dart';
+import 'package:new_one/Controller/scancontroller/scancontroller.dart';
+import 'package:new_one/Pages/login/screens/loginscreen.dart';
 import 'package:new_one/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
@@ -25,14 +29,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        // ChangeNotifierProvider(create: (_)=>Languagecontroller()..init()),
-        // ChangeNotifierProvider(create: (_) => configcontroller()),
         ChangeNotifierProvider(create: (_) => LoginController(context)),
-        // ChangeNotifierProvider(create: (_) => dashboardcontroller()),
-        // ChangeNotifierProvider(create: (_) => tripdetailcontroller()),
+        ChangeNotifierProvider(create: (_) => homecontroller()),
+        ChangeNotifierProvider(create: (_) => Redeemcontroller()),
+        ChangeNotifierProvider(create: (_) => Scancontroller()),
       ],
       child: Consumer<Languagecontroller>(builder: (context, langcon, child) {
-        return MaterialApp(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           localizationsDelegates: const [
             S.delegate,
@@ -44,13 +47,13 @@ class _MyAppState extends State<MyApp> {
           locale: langcon.locale,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(
-              primarySwatch:
-                  createMaterialColor(const Color.fromARGB(255, 1, 143, 154)),
-            ),
+                // primarySwatch:
+                //     createMaterialColor(const Color.fromARGB(255, 1, 143, 154)),
+                ),
             useMaterial3: true, // Enable Material 3
           ),
-          home:
-              RedeemPointsScreen(), // Ensure Loginscreen is a StatelessWidget or StatefulWidget
+          getPages: Routes.allRoutes,
+          home: const Loginscreen(),
         );
       }),
     );

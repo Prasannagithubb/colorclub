@@ -25,26 +25,81 @@ class MessageLookup extends MessageLookupByLibrary {
     "Mobilenumber": MessageLookupByLibrary.simpleMessage(
       "Weka Nambari ya Simu",
     ),
+    "ProductComplaints": MessageLookupByLibrary.simpleMessage(
+      "Malalamiko ya Bidhaa",
+    ),
     "Sendotp": MessageLookupByLibrary.simpleMessage("Send OTP"),
     "address1": MessageLookupByLibrary.simpleMessage("Anwani 1"),
     "address2": MessageLookupByLibrary.simpleMessage("Anwani 2"),
+    "badgelevel": MessageLookupByLibrary.simpleMessage("Kiwango cha Cheo"),
+    "benifitofalltier": MessageLookupByLibrary.simpleMessage(
+      "Faida za Kila Kiwango",
+    ),
     "city": MessageLookupByLibrary.simpleMessage("Jiji"),
+    "continue1": MessageLookupByLibrary.simpleMessage("Endelea"),
     "country": MessageLookupByLibrary.simpleMessage("Nchi"),
+    "dealer": MessageLookupByLibrary.simpleMessage("Dealer"),
     "didntrecivecode": MessageLookupByLibrary.simpleMessage(
       "Hukupokea nambari ya kuthibitisha?",
     ),
+    "earnpointsforeverydollarspent": MessageLookupByLibrary.simpleMessage(
+      "Pata Pointi Kwa Kila Dola Iliyotumika",
+    ),
+    "earnpointshistory": MessageLookupByLibrary.simpleMessage(
+      "Historia ya Kupata Pointi",
+    ),
+    "finddealer": MessageLookupByLibrary.simpleMessage("Pata Dealer"),
+    "findproduct": MessageLookupByLibrary.simpleMessage("Pata Bidhaa"),
+    "getpoints": MessageLookupByLibrary.simpleMessage("Pata Pointi"),
+    "kyc": MessageLookupByLibrary.simpleMessage("KYC"),
     "language": MessageLookupByLibrary.simpleMessage("Lugha"),
+    "login": MessageLookupByLibrary.simpleMessage("Ingia"),
+    "mydealerpartner": MessageLookupByLibrary.simpleMessage(
+      "Mshirika Wangu wa Dealer",
+    ),
+    "mytransactions": MessageLookupByLibrary.simpleMessage("Miamala Yangu"),
     "notificationvia": MessageLookupByLibrary.simpleMessage("Taarifa Kupitia"),
     "otpenter": MessageLookupByLibrary.simpleMessage(
       "Ingiza OTP iliyotumwa kwa simu yako",
     ),
     "otpverify": MessageLookupByLibrary.simpleMessage("Uthibitishaji wa OTP"),
-    "register": MessageLookupByLibrary.simpleMessage("Sajili"),
+    "points": MessageLookupByLibrary.simpleMessage("Pointi"),
+    "pointsaa": MessageLookupByLibrary.simpleMessage("Pointi 150"),
+    "pointstocashorpaints": MessageLookupByLibrary.simpleMessage(
+      "Pointi Kwa Pesa au Rangi",
+    ),
+    "redeem": MessageLookupByLibrary.simpleMessage("Fidia"),
+    "redeemamount": MessageLookupByLibrary.simpleMessage("Kiasi cha Kufidia"),
+    "redeempoints": MessageLookupByLibrary.simpleMessage("Fidia Pointi"),
+    "redeempointshistory": MessageLookupByLibrary.simpleMessage(
+      "Historia ya Kufidia Pointi",
+    ),
+    "redeemtowhitegoods": MessageLookupByLibrary.simpleMessage(
+      "Fidia Kwa Vitu Vyeupe",
+    ),
+    "refercustomer": MessageLookupByLibrary.simpleMessage("Mwandikishe Mteja"),
     "resend": MessageLookupByLibrary.simpleMessage("Tuma tena"),
+    "rewardaa": MessageLookupByLibrary.simpleMessage("Zawadi ya \$10"),
+    "rewardbalance": MessageLookupByLibrary.simpleMessage("Salio la Zawadi"),
+    "rewards": MessageLookupByLibrary.simpleMessage("Zawadi"),
+    "scancoupon": MessageLookupByLibrary.simpleMessage("Scan Coupon"),
+    "scaneedqrcode": MessageLookupByLibrary.simpleMessage("QR Code Ime Scan"),
+    "trackallpoints": MessageLookupByLibrary.simpleMessage(
+      "Fuatilia Pointi Zote",
+    ),
     "username": MessageLookupByLibrary.simpleMessage("Jina la mtumiaji"),
+    "userpoints": MessageLookupByLibrary.simpleMessage("Pointi za Mtumiaji"),
+    "verificationsucessfull": MessageLookupByLibrary.simpleMessage(
+      "Uthibitishaji Umefanikiwa!",
+    ),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "viagoogle": MessageLookupByLibrary.simpleMessage("Kupitia Google"),
+    "viewbenifits": MessageLookupByLibrary.simpleMessage("Tazama Faida"),
+    "welcometo": MessageLookupByLibrary.simpleMessage("Karibu Kwa"),
     "whatsappno": MessageLookupByLibrary.simpleMessage("Nambari ya Whats App"),
+    "yourotphasverifiedsucessfully": MessageLookupByLibrary.simpleMessage(
+      "OTP Yako Imefanikiwa Kuhakikiwa",
+    ),
     "zipcode": MessageLookupByLibrary.simpleMessage("Msimbo wa Eneo"),
   };
 }

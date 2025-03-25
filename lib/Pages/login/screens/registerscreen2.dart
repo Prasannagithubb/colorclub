@@ -351,8 +351,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 child: Column(
                   children: [
                     _buildTextField(
-                      "Full Name",
-                      "Full Name",
+                      "Full Name212",
+                      "Full Name2121",
                       fullNameController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {

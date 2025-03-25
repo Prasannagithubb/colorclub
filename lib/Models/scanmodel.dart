@@ -74,6 +74,13 @@ class CouponData {
   String? updatedOn;
   String traceId;
 
+//   {
+//     "respType": "Success",
+//     "respCode": "CC100",
+//     "respDesc": "Data Retrived Succesfully",
+//     "data": "[{\"CouponCode\":\"mVpY0VTYpnZfuCBS1TaWvA==\",\"Points\":50,\"EquvalentAmount\":50.00,\"AmountCurr\":\"Rupees\",\"ItemCode\":\"IN123SDF\",\"ItemName\":\"Product1\",\"PackSize\":\"5 liter\",\"BatchNumber\":\"BN2314SDF23\",\"DateofMFG\":\"2025-03-14T00:00:00\",\"DateofExpiry\":\"2025-03-14T00:00:00\",\"CouponStatus\":0,\"DateofClaim\":\"2025-03-14T00:00:00\"}]"
+// }
+
   CouponData({
     required this.docEntry,
     required this.couponCode,
