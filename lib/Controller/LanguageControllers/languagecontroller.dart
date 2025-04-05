@@ -8,7 +8,6 @@ import 'package:new_one/Constant/Sharedprfrence.dart';
 class Languagecontroller extends ChangeNotifier {
   Locale _locale = Locale('en');
   Locale get locale => _locale;
-
   setlocate(Locale locale) {
     if (locale == _locale) return;
     _locale = locale;

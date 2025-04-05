@@ -74,8 +74,10 @@ class CustomSpinkitdButton extends StatelessWidget {
                 ? child
                 : Text(
                     label.toString(),
-                    style: _theme.textTheme.labelLarge
-                        ?.copyWith(color: textcolor ?? Colors.white),
+                    style: _theme.textTheme.labelLarge?.copyWith(
+                        color: textcolor ?? Colors.white,
+                        fontSize: labelSize,
+                        fontWeight: FontWeight.bold),
                   ),
       ),
     );

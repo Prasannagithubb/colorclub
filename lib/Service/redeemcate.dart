@@ -2,18 +2,20 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
+import 'package:new_one/Constant/AppConstant.dart';
 import 'package:new_one/Models/redeemmodel/redeemcate.dart';
 
 class CateApi {
-  static Future<Category> getData(String cardcode) async {
+  static Future<Category> getData() async {
     int ressCode = 500;
 
     try {
       final response = await http.get(
         Uri.parse(
-            'http://dev.sellerkit.in:5468/api/Coupon/v1/GetCategory?memberid=18'),
+            'http://dev.sellerkit.in:5468/api/Coupon/v1/GetCategory?memberid=${AppConstant.memberId}'),
         headers: {
           "content-type": "application/json",
+          'Authorization': 'bearer ${AppConstant.token}'
         },
       );
       ressCode = response.statusCode;

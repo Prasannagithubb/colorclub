@@ -5,11 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:new_one/Constant/ConstantRoutes.dart';
 import 'package:new_one/Constant/Screen.dart';
-import 'package:new_one/Controller/logincontroller/languagecontroller.dart';
 import 'package:new_one/Models/language_model.dart';
 import 'package:new_one/Pages/login/screens/loginscreen.dart';
 import 'package:new_one/generated/l10n.dart';
-import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -93,10 +91,20 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  var groupvalue = '';
+  var groupvalueName = '';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    groupvalue = languageModel[0].languagecode.toString();
+    groupvalueName = languageModel[0].sublanguage.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    var groupvalue = context.read<Languagecontroller>().locale.languageCode;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 16, 57, 122),
       // appBar: AppBar(
@@ -251,7 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding: EdgeInsets.only(
                               bottom: Screens.fullHeight(context) * 0.01,
                               left: Screens.width(context) * 0.02),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 255, 255, 255),
                             image: DecorationImage(
                               alignment: Alignment.bottomCenter,
@@ -270,64 +278,82 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Container(
-                                      height:
-                                          Screens.fullHeight(context) * 0.07,
-                                      width: Screens.width(context) * 0.20,
-                                      // width: Scree,
-                                      padding: const EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          border:
-                                              Border.all(color: Colors.grey)),
-                                      child: Center(
-                                        child: Text(
-                                          "${S.current.redeem}",
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.toNamed(
+                                            ConstantRoutes.redeempoints);
+                                      },
+                                      child: Container(
+                                        height:
+                                            Screens.fullHeight(context) * 0.07,
+                                        width: Screens.width(context) * 0.20,
+                                        // width: Scree,
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border:
+                                                Border.all(color: Colors.grey)),
+                                        child: Center(
+                                          child: Text(
+                                            S.current.redeem,
+                                            style: const TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      height:
-                                          Screens.fullHeight(context) * 0.07,
-                                      width: Screens.width(context) * 0.20,
-                                      padding: const EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          border:
-                                              Border.all(color: Colors.grey)),
-                                      child: Center(
-                                        child: Text(
-                                          "${S.current.rewards}",
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.toNamed(ConstantRoutes
+                                            .underconstructionpage);
+                                      },
+                                      child: Container(
+                                        height:
+                                            Screens.fullHeight(context) * 0.07,
+                                        width: Screens.width(context) * 0.20,
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border:
+                                                Border.all(color: Colors.grey)),
+                                        child: Center(
+                                          child: Text(
+                                            S.current.rewards,
+                                            style: const TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      height:
-                                          Screens.fullHeight(context) * 0.07,
-                                      width: Screens.width(context) * 0.20,
-                                      padding: const EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          border:
-                                              Border.all(color: Colors.grey)),
-                                      child: Center(
-                                        child: Text(
-                                          "${S.current.points}",
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.toNamed(
+                                            ConstantRoutes.pointsscreen);
+                                      },
+                                      child: Container(
+                                        height:
+                                            Screens.fullHeight(context) * 0.07,
+                                        width: Screens.width(context) * 0.20,
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border:
+                                                Border.all(color: Colors.grey)),
+                                        child: Center(
+                                          child: Text(
+                                            S.current.points,
+                                            style: const TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -367,51 +393,65 @@ class _HomeScreenState extends State<HomeScreen> {
                         Positioned(
                           left: 58,
                           bottom: 85,
-                          child: Container(
-                            height: Screens.fullHeight(context) * 0.05,
-                            width: Screens.width(context) * 0.15,
-                            decoration:
-                                const BoxDecoration(color: Colors.white),
-                            child: Image.asset(
-                              "assets/redeem points2.png", // Load image from assets
-                              width: Screens.fullHeight(context) * 0.05,
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(ConstantRoutes.redeempoints);
+                            },
+                            child: Container(
+                              height: Screens.fullHeight(context) * 0.05,
+                              width: Screens.width(context) * 0.15,
+                              decoration:
+                                  const BoxDecoration(color: Colors.white),
+                              child: Image.asset(
+                                "assets/redeem points2.png", // Load image from assets
+                                width: Screens.fullHeight(context) * 0.05,
 
-                              height: Screens.width(context) * 0.15,
-                              // fit: BoxFit.cover,
+                                height: Screens.width(context) * 0.15,
+                                // fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
                         Positioned(
                           left: 178,
                           bottom: 85,
-                          child: Container(
-                            height: Screens.fullHeight(context) * 0.05,
-                            width: Screens.width(context) * 0.15,
-                            decoration:
-                                const BoxDecoration(color: Colors.white),
-                            child: Image.asset(
-                              "assets/earned points.png", // Load image from assets
-                              width: Screens.fullHeight(context) * 0.05,
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(ConstantRoutes.underconstructionpage);
+                            },
+                            child: Container(
+                              height: Screens.fullHeight(context) * 0.05,
+                              width: Screens.width(context) * 0.15,
+                              decoration:
+                                  const BoxDecoration(color: Colors.white),
+                              child: Image.asset(
+                                "assets/earned points.png", // Load image from assets
+                                width: Screens.fullHeight(context) * 0.05,
 
-                              height: Screens.width(context) * 0.15,
-                              // fit: BoxFit.cover,
+                                height: Screens.width(context) * 0.15,
+                                // fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
                         Positioned(
                           right: 49,
                           bottom: 85,
-                          child: Container(
-                            height: Screens.fullHeight(context) * 0.05,
-                            width: Screens.width(context) * 0.15,
-                            decoration:
-                                const BoxDecoration(color: Colors.white),
-                            child: Image.asset(
-                              "assets/reward.png", // Load image from assets
-                              width: Screens.fullHeight(context) * 0.05,
-
-                              height: Screens.width(context) * 0.15,
-                              // fit: BoxFit.cover,
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(ConstantRoutes.pointsscreen);
+                            },
+                            child: Container(
+                              height: Screens.fullHeight(context) * 0.05,
+                              width: Screens.width(context) * 0.15,
+                              decoration:
+                                  const BoxDecoration(color: Colors.white),
+                              child: Image.asset(
+                                "assets/reward.png", // Load image from assets
+                                width: Screens.fullHeight(context) * 0.05,
+                                height: Screens.width(context) * 0.15,
+                                // fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         )
@@ -487,98 +527,108 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: Screens.fullHeight(context) * 0.01,
               ),
 
-              Container(
-                // color: Colors.amber,
-                child: InkWell(
-                  onTap: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            insetPadding: const EdgeInsets.all(10),
-                            contentPadding: const EdgeInsets.all(0),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                            alignment: Alignment.center,
-                            content: Container(
-                              // height: 300,
-                              // color: Colors.amber,
-                              width: Screens.width(context) * 0.1,
-                              constraints: BoxConstraints(
-                                  maxHeight: Screens.fullHeight(context) * 0.3),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Expanded(
-                                    child: ListView.builder(
-                                        shrinkWrap: true,
-                                        // ise:true,
-                                        itemCount: LanguageModel.length,
-                                        itemBuilder: (context, i) {
-                                          var item = LanguageModel[i];
-                                          return RadioListTile(
-                                              value: item.languagecode,
-                                              activeColor: theme.primaryColor,
-                                              groupValue: groupvalue,
-                                              title: Text(item.language!),
-                                              subtitle: Text(item.sublanguage!),
-                                              onChanged: (val) {
-                                                groupvalue = val.toString();
-                                                context
-                                                    .read<Languagecontroller>()
-                                                    .setlocate(Locale(
-                                                        item.languagecode!));
-                                                Navigator.pop(context);
-                                              });
-                                        }),
-                                  )
-                                ],
-                              ),
-                            ),
-                          );
-                        });
-                  },
-                  child: Container(
-                    // alignment: Alignment.topRight,
-                    width: Screens.width(context) * 0.3,
-                    height: Screens.fullHeight(context) * 0.040,
-                    // child: const Icon(
-                    //   Icons.language,
-                    //   color: Colors.black,
-                    //   size: 30,
-                    // )
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 227, 6, 19),
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 132, 132, 132),
-                            width: 0.5),
-                        borderRadius: BorderRadius.circular(7)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "${S.current.language}",
-                          style: TextStyle(
-                            letterSpacing: 1,
-                            fontSize: 13,
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        // SizedBox(
-                        //   width: Screens.width(context) * 0.01,
-                        // ),
-                        const Icon(
-                          Icons.arrow_drop_down,
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          size: 30,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              // SizedBox(
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     InkWell(
+              //       onTap: () {
+              //         showDialog(
+              //             context: context,
+              //             builder: (context) {
+              //               return AlertDialog(
+              //                 insetPadding: const EdgeInsets.all(10),
+              //                 contentPadding: const EdgeInsets.all(0),
+              //                 shape: RoundedRectangleBorder(
+              //                     borderRadius: BorderRadius.circular(8)),
+              //                 alignment: Alignment.center,
+              //                 content: Container(
+              //                   // height: 300,
+              //                   // color: Colors.amber,
+              //                   width: Screens.width(context) * 0.1,
+              //                   constraints: BoxConstraints(
+              //                       maxHeight:
+              //                           Screens.padingHeight(context) * 0.3),
+              //                   child: Column(
+              //                     mainAxisSize: MainAxisSize.min,
+              //                     children: [
+              //                       Expanded(
+              //                         child: ListView.builder(
+              //                             shrinkWrap: true,
+              //                             // ise:true,
+              //                             itemCount: LanguageModel.length,
+              //                             itemBuilder: (context, i) {
+              //                               var item = LanguageModel[i];
+              //                               return RadioListTile(
+              //                                   value: item.languagecode,
+              //                                   activeColor: theme.primaryColor,
+              //                                   groupValue: groupvalue,
+              //                                   title: Text(item.language!),
+              //                                   subtitle:
+              //                                       Text(item.sublanguage!),
+              //                                   onChanged: (val) {
+              //                                     groupvalueName = item
+              //                                         .sublanguage
+              //                                         .toString();
+              //                                     groupvalue = val.toString();
+              //                                     context
+              //                                         .read<
+              //                                             Languagecontroller>()
+              //                                         .setlocate(Locale(
+              //                                             item.languagecode!));
+              //                                     Navigator.pop(context);
+              //                                   });
+              //                             }),
+              //                       )
+              //                     ],
+              //                   ),
+              //                 ),
+              //               );
+              //             });
+              //       },
+              //       child: Container(
+              //         alignment: Alignment.center,
+              //         width: Screens.width(context) * 0.3,
+              //         height: Screens.fullHeight(context) * 0.04,
+              //         // child: const Icon(
+              //         //   Icons.language,
+              //         //   color: Colors.black,
+              //         //   size: 30,
+              //         // )
+              //         decoration: BoxDecoration(
+              //             color: const Color.fromARGB(255, 212, 14, 0),
+              //             border: Border.all(
+              //                 color: const Color.fromARGB(255, 172, 172, 172),
+              //                 width: 0.5),
+              //             borderRadius: BorderRadius.circular(7)),
+              //         child: Padding(
+              //           padding: EdgeInsets.symmetric(
+              //               vertical: Screens.padingHeight(context) * 0.00),
+              //           child: Row(
+              //             mainAxisAlignment: MainAxisAlignment.center,
+              //             children: [
+              //               Text(
+              //                 groupvalueName,
+              //                 style: const TextStyle(
+              //                     fontSize: 16,
+              //                     fontWeight: FontWeight.bold,
+              //                     color: Color.fromARGB(255, 255, 255, 255)),
+              //               ),
+              //               SizedBox(
+              //                 width: Screens.width(context) * 0.02,
+              //               ),
+              //               const Icon(
+              //                 Icons.arrow_drop_down,
+              //                 color: Color.fromARGB(255, 255, 255, 255),
+              //                 size: 33,
+              //               ),
+              //             ],
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              // // SizedBox(
               //   height: Screens.fullHeight(context) * 0.00,
               // ),
 
@@ -613,19 +663,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           _buildMenuItem(
-                              "${S.current.scancoupon}", 'assets/scan.png',
+                              S.current.scancoupon, 'assets/scan.png',
                               onTap: () {
                             log('scancoupon');
                             Get.toNamed(ConstantRoutes.qrpage);
                           }),
                           _buildMenuItem(
-                              "${S.current.redeempoints}", 'assets/order.png',
+                              S.current.redeempoints, 'assets/order.png',
                               onTap: () {
                             log('redeempoints');
                             Get.toNamed(ConstantRoutes.redeempoints);
                           }),
-                          _buildMenuItem("${S.current.mytransactions}",
-                              "assets/referal.png", onTap: () {
+                          _buildMenuItem(S.current.mytransactions,
+                              "assets/transaction .png", onTap: () {
                             log('mytransactions');
                             Get.toNamed(ConstantRoutes.transactionscreen);
                           }),
@@ -638,15 +688,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           _buildMenuItem(
-                              S.current.mydealerpartner, "assets/referal.png",
+                              S.current.mydealerpartner, "assets/dealer.png",
                               onTap: () {
                             log('redeempoints');
-                            Get.toNamed(ConstantRoutes.referral);
+                            Get.toNamed(ConstantRoutes.mydealer);
                           }),
                           _buildMenuItem(
-                              S.current.finddealer, "assets/referal.png",
+                              S.current.finddealer, "assets/broker1.png",
                               onTap: () {
-                            log('refercustomer');
                             Get.toNamed(ConstantRoutes.finddealer);
                           }),
                           _buildMenuItem(
@@ -664,17 +713,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          _buildMenuItem(
-                              S.current.ProductComplaints, "assets/referal.png",
-                              onTap: () {
+                          _buildMenuItem(S.current.ProductComplaints,
+                              "assets/product complaints.png", onTap: () {
                             log('refercustomer');
-                            Get.toNamed(ConstantRoutes.productcomplaints);
-                          }),
-                          _buildMenuItem(
-                              S.current.findproduct, "assets/complaint.png",
-                              onTap: () {
-                            log('productcomplaints');
-
                             Get.toNamed(ConstantRoutes.productcomplaints);
                           }),
                           _buildMenuItem(S.current.kyc, "assets/kyc.png",
@@ -684,7 +725,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             //   context,
                             //   MaterialPageRoute(builder: (context) => KYCApp()),
                             // );
-                            Get.toNamed(ConstantRoutes.kyc);
+                            Get.toNamed(ConstantRoutes.register);
+                          }),
+                          _buildMenuItem(
+                              S.current.findproduct, "assets/complaint.png",
+                              onTap: () {
+                            Get.toNamed(ConstantRoutes.category);
                           }),
                         ],
                       ),

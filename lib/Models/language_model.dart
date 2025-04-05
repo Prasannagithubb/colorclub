@@ -1,18 +1,17 @@
-class languageModel {
+class LanguageModel {
   String? language;
   String? sublanguage;
   String? languagecode;
 
-  languageModel(
+  LanguageModel(
       {required this.language,
       required this.languagecode,
       required this.sublanguage});
 }
 
-List<languageModel> get LanguageModel => [
-      languageModel(
+List<LanguageModel> get languageModel => [
+      LanguageModel(
           language: "English", languagecode: "en", sublanguage: "English"),
-      languageModel(
+      LanguageModel(
           language: "Swahili", languagecode: "sw", sublanguage: "Swahili"),
-      languageModel(language: "हिंदी", languagecode: "hi", sublanguage: "Hindi")
     ];

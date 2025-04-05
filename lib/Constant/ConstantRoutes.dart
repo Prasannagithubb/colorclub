@@ -9,4 +9,10 @@ class ConstantRoutes {
   static String refercustomer = "/refercustomer";
   static String productcomplaints = "/productcomplaints";
   static String home = "/home";
+  static String mydealer = "/mydealer";
+
+  static String register = "/register";
+  static String underconstructionpage = "/underconstructionpage";
+  static String pointsscreen = "/pointsscreen";
+  static String category = "/category";
 }

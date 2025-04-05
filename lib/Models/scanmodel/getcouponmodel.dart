@@ -60,10 +60,10 @@ class Newscancoupon {
   final String itemName;
   final String packSize;
   final String batchNumber;
-  final DateTime dateOfMFG;
-  final DateTime dateOfExpiry;
+  final String dateOfMFG;
+  final String dateOfExpiry;
   final int couponStatus;
-  final DateTime dateOfClaim;
+  final String dateOfClaim;
 
   Newscancoupon({
     required this.docEntry,
@@ -83,18 +83,18 @@ class Newscancoupon {
   factory Newscancoupon.fromJson(Map<String, dynamic> jsons) {
     return Newscancoupon(
       docEntry: jsons['DocEntry'],
-      couponCode: jsons['CouponCode'],
+      couponCode: jsons['CouponCode'] ?? '',
       points: jsons['Points'],
-      equivalentAmount: jsons['EquvalentAmount'].toDouble(),
-      amountCurr: jsons['AmountCurr'],
-      itemCode: jsons['ItemCode'],
-      itemName: jsons['ItemName'],
-      packSize: jsons['PackSize'],
-      batchNumber: jsons['BatchNumber'],
-      dateOfMFG: DateTime.parse(jsons['DateofMFG']),
-      dateOfExpiry: DateTime.parse(jsons['DateofExpiry']),
-      couponStatus: jsons['CouponStatus'],
-      dateOfClaim: DateTime.parse(jsons['DateofClaim']),
+      equivalentAmount: jsons['EquvalentAmount'] ?? 0,
+      amountCurr: jsons['AmountCurr'] ?? '',
+      itemCode: jsons['ItemCode'] ?? '',
+      itemName: jsons['ItemName'] ?? '',
+      packSize: jsons['PackSize'] ?? '',
+      batchNumber: jsons['BatchNumber'] ?? '',
+      dateOfMFG: jsons['DateofMFG'] ?? '',
+      dateOfExpiry: jsons['DateofExpiry'] ?? '',
+      couponStatus: jsons['CouponStatus'] ?? '',
+      dateOfClaim: jsons['DateofClaim'] ?? '',
     );
   }
 }

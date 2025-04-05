@@ -29,22 +29,22 @@ class _RefercustomerState extends State<Refercustomer> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
+          const Center(
             child: Text("Refer customer"),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text("Go Back"),
             style: ElevatedButton.styleFrom(
               elevation: 5, // Adjust elevation for the raised effect
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              textStyle: TextStyle(fontSize: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              textStyle: const TextStyle(fontSize: 16),
             ),
+            child: const Text("Go Back"),
           )
         ],
       ),

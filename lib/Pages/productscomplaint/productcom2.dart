@@ -7,12 +7,6 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:new_one/Constant/Screen.dart';
-import 'package:new_one/Controller/logincontroller/languagecontroller.dart';
-import 'package:new_one/Models/language_model.dart';
-import 'package:new_one/Models/registration.dart';
-import 'package:new_one/Pages/login/screens/loginscreen.dart';
-import 'package:new_one/Service/regisservices.dart';
-import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 class Productcomplaintnew extends StatefulWidget {
@@ -24,6 +18,18 @@ class Productcomplaintnew extends StatefulWidget {
 
 class _ProductcomplaintnewState extends State<Productcomplaintnew> {
   final TextEditingController complaintController = TextEditingController();
+  TextEditingController _imageController = TextEditingController();
+
+  Future<void> _pickImage() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+        _imageController.text = pickedFile.name; // Set filename in TextField
+      });
+    }
+  }
+
   String? selectedProduct;
   File? _image;
   String? complaintTicket;
@@ -59,15 +65,6 @@ class _ProductcomplaintnewState extends State<Productcomplaintnew> {
   final ImagePicker _picker = ImagePicker();
   final Color primaryColor = const Color.fromARGB(255, 16, 57, 122);
   final Color greyBorder = Colors.grey.shade300;
-
-  Future<void> _pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      setState(() {
-        _image = File(pickedFile.path);
-      });
-    }
-  }
 
   void _submitComplaint() {
     if (selectedProduct != null && complaintController.text.isNotEmpty) {
@@ -164,23 +161,6 @@ class _ProductcomplaintnewState extends State<Productcomplaintnew> {
   }
 
   // Function to take a selfie (capture image from camera)
-  Future<void> pickImage() async {
-    try {
-      final ImagePicker _picker = ImagePicker();
-      XFile? image = await _picker.pickImage(source: ImageSource.camera);
-
-      if (image != null) {
-        log("Image selected: ${image.path}");
-        setState(() {
-          _selectedImage = File(image.path);
-        });
-      } else {
-        log("User canceled image selection");
-      }
-    } catch (e) {
-      log("Error picking image: $e");
-    }
-  }
 
   void _showStatePicker(BuildContext context) {
     showModalBottomSheet(
@@ -258,284 +238,357 @@ class _ProductcomplaintnewState extends State<Productcomplaintnew> {
     );
   }
 
-  List<MemberData> members = [];
-  Future<void> _saveProfile() async {
-    members.clear();
-    log(DateTime.now().toString());
+  // List<MemberData> members = [];
+  // Future<void> _saveProfile() async {
+  //   members.clear();
+  //   log(DateTime.now().toString());
 
-    setState(() {
-      stateError = selectedState == null ? "Please select a state" : null;
-      MessageError =
-          selectedMessage == null ? "Please select Notification via" : null;
-    });
+  //   setState(() {
+  //     stateError = selectedState == null ? "Please select a state" : null;
+  //     MessageError =
+  //         selectedMessage == null ? "Please select Notification via" : null;
+  //   });
 
-    if (_formKey.currentState!.validate() &&
-        selectedState != null &&
-        selectedMessage != null) {
-      members.add(MemberData(
-        docEntry: 0,
-        memberCode: "",
-        memberFirstName: fullNameController.text,
-        memberLastName: "",
-        memberNicName: "",
-        memberLanguage: selectedLanguage,
-        memberContact: mobileController.text,
-        emailId: emailController.text,
-        whatsAppNo: whatsappController.text,
-        address1: addressController.text,
-        address2: "",
-        address3: "",
-        city: "",
-        state: selectedState ?? "",
-        country: "",
-        zipcode: "",
-        memberType: "",
-        memberStatus: "",
-        activeSince: "1990-05-15T00:00:00.000Z",
-        rating: 0.0,
-        badgeLevel: "",
-        referredBy: "",
-        dob: "1990-05-15T00:00:00.000Z",
-        pwdKey: null,
-        lastLogin: "1990-05-15T00:00:00.000Z",
-        lastOTP: null,
-        validTill: "1990-05-15T00:00:00.000Z",
-        pinNumber: 0,
-        deviceName: "",
-        deviceCode: "",
-        fcmToken: "",
-        profilePicURL: "",
-        updateBy: "",
-        updatedOn: "1990-05-15T00:00:00.000Z",
-        traceId: "",
-      ));
-      // MemberData user =
+  //   if (_formKey.currentState!.validate() &&
+  //       selectedState != null &&
+  //       selectedMessage != null) {
+  //     members.add(MemberData(
+  //       docEntry: 0,
+  //       memberCode: "",
+  //       memberFirstName: fullNameController.text,
+  //       memberLastName: "",
+  //       memberNicName: "",
+  //       memberLanguage: selectedLanguage,
+  //       memberContact: mobileController.text,
+  //       emailId: emailController.text,
+  //       whatsAppNo: whatsappController.text,
+  //       address1: addressController.text,
+  //       address2: "",
+  //       address3: "",
+  //       city: "",
+  //       state: selectedState ?? "",
+  //       country: "",
+  //       zipcode: "",
+  //       memberType: "",
+  //       memberStatus: "",
+  //       activeSince: "1990-05-15T00:00:00.000Z",
+  //       rating: 0.0,
+  //       badgeLevel: "",
+  //       referredBy: "",
+  //       dob: "1990-05-15T00:00:00.000Z",
+  //       pwdKey: null,
+  //       lastLogin: "1990-05-15T00:00:00.000Z",
+  //       lastOTP: null,
+  //       validTill: "1990-05-15T00:00:00.000Z",
+  //       pinNumber: 0,
+  //       deviceName: "",
+  //       deviceCode: "",
+  //       fcmToken: "",
+  //       profilePicURL: "",
+  //       updateBy: "",
+  //       updatedOn: "1990-05-15T00:00:00.000Z",
+  //       traceId: "",
+  //     ));
+  //     // MemberData user =
 
-      // log("📤 Sending user data to API: ${jsonEncode(user.tojson())}");
+  //     // log("📤 Sending user data to API: ${jsonEncode(user.tojson())}");
 
-      bool isRegistered = await ApiService.registerUser(members);
+  //     bool isRegistered = await ApiService.registerUser(members);
 
-      if (isRegistered) {
-        log(" Profile Saved Successfully!");
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Profile Saved Successfully!")),
-        );
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const Loginscreen()));
-      } else {
-        log(" Profile save failed.");
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Failed to save profile.")),
-        );
-      }
-    }
-  }
+  //     if (isRegistered) {
+  //       log(" Profile Saved Successfully!");
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         const SnackBar(content: Text("Profile Saved Successfully!")),
+  //       );
+  //       Navigator.pushReplacement(context,
+  //           MaterialPageRoute(builder: (context) => const Loginscreen()));
+  //     } else {
+  //       log(" Profile save failed.");
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         const SnackBar(content: Text("Failed to save profile.")),
+  //       );
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+          padding: EdgeInsets.only(bottom: 30),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 1, 53, 143),
+          ),
           height: Screens.fullHeight(context),
-          width: Screens.width(context),
-          padding: const EdgeInsets.only(bottom: 20, top: 30),
-          decoration:
-              const BoxDecoration(color: Color.fromARGB(255, 16, 57, 122)),
-          child: Column(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          topLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(20))),
-                  child: Column(
-                    children: [
-                      SizedBox(height: Screens.fullHeight(context) * 0.01),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset('assets/Img1.png', height: 120),
-                          Image.asset('assets/CoralLogo_Outline.png',
-                              height: 100),
-                          Image.asset('assets/Img2.png', height: 130),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          _buildSectionTitle("hi"),
-                        ],
-                      ),
-                      Text(
-                        '       PRODUCT COMPLAINTS',
-                        style: TextStyle(
-                            color: Colors.red.shade700,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
-                      ),
-                      SizedBox(height: Screens.bodyheight(context) * 0.01),
-                      // Dropdown Selection
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text("Select Product",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black)),
-                            const SizedBox(height: 8),
-                            Container(
-                              decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: greyBorder, width: 1.5),
-                                borderRadius: BorderRadius.circular(8),
-                                color: Colors.grey.shade100,
-                              ),
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 12),
-                              child: DropdownButtonFormField<String>(
-                                borderRadius: BorderRadius.circular(10),
-                                value: selectedProduct,
-                                items: products.map((product) {
-                                  return DropdownMenuItem(
-                                      value: product, child: Text(product));
-                                }).toList(),
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedProduct = value;
-                                  });
-                                },
-                                icon: const Icon(
-                                  size: 25.0,
-                                  Icons.arrow_drop_down,
-                                  color: Colors.red,
-                                ),
-                                decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Choose Product",
-                                    hintStyle: TextStyle(color: Colors.grey)),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      // Complaint Input Field
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text("Enter Complaint Details",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black)),
-                            const SizedBox(height: 8),
-                            TextField(
-                              cursorColor: Colors.grey,
-                              controller: complaintController,
-                              maxLines: 3,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                    borderSide:
-                                        const BorderSide(color: Colors.amber)),
-                                hintText: "Describe your complaint",
-                                hintStyle: const TextStyle(color: Colors.grey),
-                                filled: true,
-                                fillColor: Colors.grey.shade100,
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Colors.grey, width: 1.0),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      // Attach Image Button
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
+          child: Container(
+            padding: EdgeInsets.only(
+              top: 30,
+            ),
+            decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 212, 14, 0),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20))),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            topLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
+                            bottomLeft: Radius.circular(20))),
+                    child: Column(
+                      children: [
+                        SizedBox(height: Screens.fullHeight(context) * 0.01),
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ElevatedButton.icon(
-                              onPressed: _pickImage,
-                              icon: const Icon(Icons.image,
-                                  color: Color.fromARGB(255, 255, 17, 0)),
-                              label: const Text("Attach Image",
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 255, 17, 0))),
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: const Size(295, 50),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(6),
-                                ),
-                                backgroundColor: Colors.grey.shade200,
-                              ),
-                            ),
-                            SizedBox(
-                              width: Screens.width(context) * 0.02,
-                            ),
-                            if (_image != null)
-                              const Icon(Icons.check_circle,
-                                  color: Color.fromARGB(255, 255, 17, 0)),
+                            Image.asset('assets/Img1.png', height: 120),
+                            Image.asset('assets/CoralLogo_Outline.png',
+                                height: 100),
+                            Image.asset('assets/Img2.png', height: 130),
                           ],
                         ),
-                      ),
-                      const SizedBox(height: 20),
-                      // Complaint Ticket Display
-                      if (complaintTicket != null)
-                        Center(
-                          child: Text(
-                            complaintTicket!,
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: primaryColor),
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _buildSectionTitle("hi"),
+                          ],
                         ),
-                      SizedBox(
-                        height: Screens.bodyheight(context) * 0.12,
-                      ),
-                      // Submit Button
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: Center(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              _submitComplaint();
-                              _showComplaintDialog();
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red.shade800,
-                              minimumSize: const Size(360, 50),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8)),
+                        Text(
+                          '       PRODUCT COMPLAINTS',
+                          style: TextStyle(
+                              color: Colors.red.shade700,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16),
+                        ),
+                        SizedBox(height: Screens.bodyheight(context) * 0.02),
+                        // Dropdown Selection
+                        Container(
+                          height: 380,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text("Choose Product",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black)),
+                                      const SizedBox(height: 1),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: greyBorder, width: 1.5),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          color: Colors.grey.shade100,
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12),
+                                        child: DropdownButtonFormField<String>(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          value: selectedProduct,
+                                          items: products.map((product) {
+                                            return DropdownMenuItem(
+                                                value: product,
+                                                child: Text(product));
+                                          }).toList(),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              selectedProduct = value;
+                                            });
+                                          },
+                                          icon: const Icon(
+                                            size: 25.0,
+                                            Icons.arrow_drop_down,
+                                            color: Colors.red,
+                                          ),
+                                          decoration: const InputDecoration(
+                                              border: InputBorder.none,
+                                              hintText: "Choose Product",
+                                              hintStyle: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 15)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                // Complaint Input Field
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text("Enter Complaint Details",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black)),
+                                      const SizedBox(height: 2),
+                                      TextField(
+                                        cursorColor: Colors.grey,
+                                        controller: complaintController,
+                                        maxLines: 4,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            borderSide: const BorderSide(
+                                                color: Colors
+                                                    .red), // Default border color
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            borderSide: BorderSide(
+                                                color: Colors.grey.shade100,
+                                                width:
+                                                    1.5), // Border when not focused
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            borderSide: const BorderSide(
+                                                color: Colors.green,
+                                                width:
+                                                    2.0), // Border when focused
+                                          ),
+                                          hintText: "Describe your complaint",
+                                          hintStyle: const TextStyle(
+                                              color: Colors.grey, fontSize: 15),
+                                          filled: true,
+                                          fillColor: Colors.grey.shade100,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                // Attach Image Button
+                                Column(
+                                  // mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text("  Attach image",
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black)),
+                                    Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: TextField(
+                                          controller:
+                                              _imageController, // Set controller
+                                          readOnly:
+                                              true, // Prevent manual input
+                                          onTap:
+                                              _pickImage, // Calls function when tapped
+                                          style: TextStyle(
+                                            color: _image != null
+                                                ? Colors
+                                                    .green // Green when image is uploaded
+                                                : Colors
+                                                    .black, // Default color when no image
+                                            fontSize: 14,
+                                            fontWeight: FontWeight
+                                                .bold, // Optional: Make text bold
+                                          ),
+                                          decoration: InputDecoration(
+                                            hintText: "Attach Image",
+                                            hintStyle: const TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 15),
+                                            suffixIcon: Icon(
+                                              Icons.image,
+                                              color: _image != null
+                                                  ? Colors
+                                                      .green // Red when image is selected
+                                                  : Colors
+                                                      .grey, // Grey when no image
+                                            ),
+                                            filled: true,
+                                            fillColor: Colors.grey
+                                                .shade100, // Background color
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(6),
+                                              borderSide: BorderSide
+                                                  .none, // Removes border
+                                            ),
+                                          ),
+                                        )),
+                                  ],
+                                ),
+                              ],
                             ),
-                            child: const Text("Register Complaint",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18)),
                           ),
                         ),
-                      ),
-                      // SizedBox(
-                      //   height: Screens.bodyheight(context) * 0.12,
-                      // ),
-                    ],
+
+                        const SizedBox(height: 20),
+                        // Complaint Ticket Display
+                        if (complaintTicket != null)
+                          Center(
+                            child: Text(
+                              complaintTicket!,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor),
+                            ),
+                          ),
+                        SizedBox(
+                          height: Screens.bodyheight(context) * 0.05,
+                        ),
+                        // Submit Button
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _submitComplaint();
+                                _showComplaintDialog();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red.shade800,
+                                minimumSize: const Size(360, 50),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8)),
+                              ),
+                              child: const Text("Register Complaint",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18)),
+                            ),
+                          ),
+                        ),
+                        // SizedBox(
+                        //   height: Screens.bodyheight(context) * 0.12,
+                        // ),
+                      ],
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -752,7 +805,7 @@ class _ProductcomplaintnewState extends State<Productcomplaintnew> {
 
   Widget _buildSectionTitle(String title) {
     final theme = Theme.of(context);
-    var groupvalue = context.read<Languagecontroller>().locale.languageCode;
+    // var groupvalue = context.read<Languagecontroller>().locale.languageCode;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -766,105 +819,106 @@ class _ProductcomplaintnewState extends State<Productcomplaintnew> {
                 color: Color.fromARGB(255, 255, 255, 255)),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: Screens.width(context) * 0.0,
-              vertical: Screens.padingHeight(context) * 0.013),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              InkWell(
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          insetPadding: const EdgeInsets.all(10),
-                          contentPadding: const EdgeInsets.all(0),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          alignment: Alignment.center,
-                          content: Container(
-                            // height: 300,
-                            // color: Colors.amber,
-                            width: Screens.width(context) * 0.1,
-                            constraints: BoxConstraints(
-                                maxHeight: Screens.padingHeight(context) * 0.2),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Expanded(
-                                  child: ListView.builder(
-                                      shrinkWrap: true,
-                                      // ise:true,
-                                      itemCount: LanguageModel.length,
-                                      itemBuilder: (context, i) {
-                                        var item = LanguageModel[i];
-                                        return RadioListTile(
-                                            value: item.languagecode,
-                                            activeColor: theme.primaryColor,
-                                            groupValue: groupvalue,
-                                            title: Text(item.language!),
-                                            subtitle: Text(item.sublanguage!),
-                                            onChanged: (val) {
-                                              groupvalue = val.toString();
-                                              context
-                                                  .read<Languagecontroller>()
-                                                  .setlocate(Locale(
-                                                      item.languagecode!));
-                                              Navigator.pop(context);
-                                            });
-                                      }),
-                                )
-                              ],
-                            ),
-                          ),
-                        );
-                      });
-                },
-                child: Container(
-                  alignment: Alignment.topRight,
-                  width: Screens.width(context) * 0.30,
-                  height: Screens.bodyheight(context) * 0.040,
-                  // child: const Icon(
-                  //   Icons.language,
-                  //   color: Colors.black,
-                  //   size: 30,
-                  // )
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      // color: const Color.fromARGB(255, 255, 255, 255),
-                      border: Border.all(color: Colors.grey.shade400, width: 1),
-                      borderRadius: BorderRadius.circular(6)),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: Screens.padingHeight(context) * 0.005),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          'English',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black,
-                            // fontWeight: FontWeight.bold
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Icon(
-                          Icons.arrow_drop_down,
-                          color: Colors.red,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        // Padding(
+        //   padding: EdgeInsets.symmetric(
+        //       horizontal: Screens.width(context) * 0.0,
+        //       vertical: Screens.padingHeight(context) * 0.013),
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     children: [
+        //       InkWell(
+        //         onTap: () {
+        //           showDialog(
+        //               context: context,
+        //               builder: (context) {
+        //                 return AlertDialog(
+        //                   insetPadding: const EdgeInsets.all(10),
+        //                   contentPadding: const EdgeInsets.all(0),
+        //                   shape: RoundedRectangleBorder(
+        //                       borderRadius: BorderRadius.circular(8)),
+        //                   alignment: Alignment.center,
+        //                   content: Container(
+        //                     // height: 300,
+        //                     // color: Colors.amber,
+        //                     width: Screens.width(context) * 0.1,
+        //                     constraints: BoxConstraints(
+        //                         maxHeight: Screens.padingHeight(context) * 0.3),
+        //                     child: Column(
+        //                       mainAxisSize: MainAxisSize.min,
+        //                       children: [
+        //                         Expanded(
+        //                           child: ListView.builder(
+        //                               shrinkWrap: true,
+        //                               // ise:true,
+        //                               itemCount: LanguageModel.length,
+        //                               itemBuilder: (context, i) {
+        //                                 var item = LanguageModel[i];
+        //                                 return RadioListTile(
+        //                                     value: item.languagecode,
+        //                                     activeColor: theme.primaryColor,
+        //                                     groupValue: groupvalue,
+        //                                     title: Text(item.language!),
+        //                                     subtitle: Text(item.sublanguage!),
+        //                                     onChanged: (val) {
+        //                                       groupvalue = val.toString();
+        //                                       context
+        //                                           .read<Languagecontroller>()
+        //                                           .setlocate(Locale(
+        //                                               item.languagecode!));
+        //                                       Navigator.pop(context);
+        //                                     });
+        //                               }),
+        //                         )
+        //                       ],
+        //                     ),
+        //                   ),
+        //                 );
+        //               });
+        //         },
+        //         child: Container(
+        //           // alignment: Alignment.topRight,
+        //           width: Screens.width(context) * 0.3,
+        //           height: Screens.fullHeight(context) * 0.04,
+        //           // child: const Icon(
+        //           //   Icons.language,
+        //           //   color: Colors.black,
+        //           //   size: 30,
+        //           // )
+        //           decoration: BoxDecoration(
+        //               color: const Color.fromARGB(255, 248, 248, 248),
+        //               border: Border.all(
+        //                   color: const Color.fromARGB(255, 172, 172, 172),
+        //                   width: 0.5),
+        //               borderRadius: BorderRadius.circular(7)),
+        //           child: Padding(
+        //             padding: EdgeInsets.symmetric(
+        //                 vertical: Screens.padingHeight(context) * 0.00),
+        //             child: Row(
+        //               mainAxisAlignment: MainAxisAlignment.center,
+        //               children: [
+        //                 const Text(
+        //                   "English",
+        //                   style: TextStyle(
+        //                       fontSize: 16,
+        //                       fontWeight: FontWeight.bold,
+        //                       color: Color.fromARGB(255, 95, 95, 95)),
+        //                 ),
+        //                 SizedBox(
+        //                   width: Screens.width(context) * 0.02,
+        //                 ),
+        //                 const Icon(
+        //                   Icons.arrow_drop_down,
+        //                   color: const Color.fromARGB(255, 212, 14, 0),
+        //                   size: 33,
+        //                 ),
+        //               ],
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }

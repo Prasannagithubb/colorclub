@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_scanner/mobile_scanner.dart';
@@ -18,8 +19,20 @@ class QRpage extends StatefulWidget {
 class _QRpageState extends State<QRpage> {
   String _qrCode = "Scan a QR code"; // Default message before scanning
   bool _hasScanned = false; // Prevent multiple detections
-  final MobileScannerController _scannerController =
-      MobileScannerController(); // QR scanner controller
+  final MobileScannerController _scannerController = MobileScannerController();
+  AudioPlayer? audioPlayer;
+  @override
+  void initState() {
+    super.initState();
+    audioPlayer = AudioPlayer();
+  }
+
+  // Function to play sound
+  void playAudio(String assetPath) async {
+    log('assetPath::$assetPath');
+    await audioPlayer!.play(AssetSource(assetPath));
+  }
+  // QR scanner controller
 
   // API call to fetch scan points
   Future<int> _fetchScanPoints(String scannedCode) async {
@@ -58,6 +71,8 @@ class _QRpageState extends State<QRpage> {
         barcode.barcodes.first.rawValue; // Get QR code value
 
     if (scannedValue != null) {
+      playAudio("Sounds/Pointsfinal.mp3");
+
       setState(() {
         _qrCode = scannedValue;
         _hasScanned = true;

@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:new_one/Constant/Screen.dart';
+import 'package:new_one/Controller/LanguageControllers/languagecontroller.dart';
+import 'package:new_one/Models/FindDealerModel.dart';
+import 'package:new_one/Pages/finddealer/dealermapscreen.dart';
+import 'package:new_one/Pages/finddealer/mapscreen.dart';
+import 'package:provider/provider.dart';
+
+import '../../Controller/FindDealerCtrlr.dart';
 
 class FindDealerPage extends StatefulWidget {
   @override
@@ -7,269 +14,556 @@ class FindDealerPage extends StatefulWidget {
 }
 
 class _FindDealerPageState extends State<FindDealerPage> {
-  List<Map<String, dynamic>> dealers = [
-    {
-      "name": "Tanzania Paints Ltd",
-      "location": "Dar es Salaam",
-      "phone": "+255 654 123 456",
-      "rating": 4.7,
-      "latitude": -6.792354,
-      "longitude": 39.208328
-    },
-    {
-      "name": "Arusha Color House",
-      "location": "Arusha",
-      "phone": "+255 767 234 567",
-      "rating": 4.5,
-      "latitude": -3.386925,
-      "longitude": 36.682995
-    },
-    {
-      "name": "Mwanza Paint Mart",
-      "location": "Mwanza",
-      "phone": "+255 768 345 678",
-      "rating": 4.6,
-      "latitude": -2.516431,
-      "longitude": 32.917058
-    },
-    {
-      "name": "Dodoma Paint Supplies",
-      "location": "Dodoma",
-      "phone": "+255 765 456 789",
-      "rating": 4.4,
-      "latitude": -6.162959,
-      "longitude": 35.751606
-    },
-    {
-      "name": "Shinyanga Paint Depot",
-      "location": "Shinyanga",
-      "phone": "+255 754 567 890",
-      "rating": 4.3,
-      "latitude": -3.663703,
-      "longitude": 33.421423
-    },
-    {
-      "name": "Mbeya Coatings",
-      "location": "Mbeya",
-      "phone": "+255 759 678 901",
-      "rating": 4.5,
-      "latitude": -8.914050,
-      "longitude": 33.439379
-    },
-    {
-      "name": "Morogoro Paint Center",
-      "location": "Morogoro",
-      "phone": "+255 765 789 012",
-      "rating": 4.6,
-      "latitude": -6.821340,
-      "longitude": 37.661220
-    },
-    {
-      "name": "Tanga Paint Suppliers",
-      "location": "Tanga",
-      "phone": "+255 768 890 123",
-      "rating": 4.2,
-      "latitude": -5.070189,
-      "longitude": 39.098810
-    },
-    {
-      "name": "Kigoma Color World",
-      "location": "Kigoma",
-      "phone": "+255 762 901 234",
-      "rating": 4.3,
-      "latitude": -4.876582,
-      "longitude": 29.626960
-    },
-    {
-      "name": "Tabora Paint Solutions",
-      "location": "Tabora",
-      "phone": "+255 765 012 345",
-      "rating": 4.4,
-      "latitude": -5.021185,
-      "longitude": 32.826473
-    },
-    {
-      "name": "Songea Paint Masters",
-      "location": "Songea",
-      "phone": "+255 754 123 678",
-      "rating": 4.5,
-      "latitude": -10.689676,
-      "longitude": 35.650482
-    },
-    {
-      "name": "Mtwara Paints & Colors",
-      "location": "Mtwara",
-      "phone": "+255 765 234 789",
-      "rating": 4.2,
-      "latitude": -10.317609,
-      "longitude": 40.175018
-    },
-    {
-      "name": "Iringa Paint Experts",
-      "location": "Iringa",
-      "phone": "+255 768 345 890",
-      "rating": 4.6,
-      "latitude": -7.770070,
-      "longitude": 35.692747
-    },
-    {
-      "name": "Lindi Paint Shop",
-      "location": "Lindi",
-      "phone": "+255 762 456 901",
-      "rating": 4.3,
-      "latitude": -10.002094,
-      "longitude": 39.717010
-    },
-    {
-      "name": "Zanzibar Paints & Supplies",
-      "location": "Zanzibar",
-      "phone": "+255 759 567 012",
-      "rating": 4.7,
-      "latitude": -6.165917,
-      "longitude": 39.202640
-    },
-    {
-      "name": "Bukoba Color Hub",
-      "location": "Bukoba",
-      "phone": "+255 765 678 123",
-      "rating": 4.4,
-      "latitude": -1.331848,
-      "longitude": 31.812880
-    },
-    {
-      "name": "Musoma Paint Experts",
-      "location": "Musoma",
-      "phone": "+255 768 789 234",
-      "rating": 4.5,
-      "latitude": -1.500591,
-      "longitude": 33.797297
-    },
-    {
-      "name": "Moshi Paint Masters",
-      "location": "Moshi",
-      "phone": "+255 762 890 345",
-      "rating": 4.3,
-      "latitude": -3.333333,
-      "longitude": 37.333333
-    },
-    {
-      "name": "Singida Paint Depot",
-      "location": "Singida",
-      "phone": "+255 759 901 456",
-      "rating": 4.2,
-      "latitude": -4.816284,
-      "longitude": 34.743593
-    },
-    {
-      "name": "Njombe Paint House",
-      "location": "Njombe",
-      "phone": "+255 765 012 567",
-      "rating": 4.6,
-      "latitude": -9.331792,
-      "longitude": 34.774379
-    }
-  ];
+  // List<Map<String, dynamic>>? allDealers;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context.read<FindDealerController>().init(context);
+      setState(() {});
+    });
+  }
 
-  String searchQuery = "";
-  final ScrollController _scrollController = ScrollController();
+  @override
+  void dispose() {
+    // context.read<FindDealerController>().distanceController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 16, 57, 122),
-          leading: const Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          title: const Text(
-            "Find Dealer",
-            style: TextStyle(color: Colors.white),
-          )),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: "Search by location or dealer name...",
-                prefixIcon: const Icon(Icons.search),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-              ),
-              onChanged: (value) {
-                setState(() {
-                  searchQuery = value.toLowerCase();
-                });
-              },
+      // appBar: AppBar(
+      //     backgroundColor: const Color.fromARGB(255, 16, 57, 122),
+      //     leading: const Icon(
+      //       Icons.arrow_back,
+      //       color: Colors.white,
+      //     ),
+      //     title: const Text(
+      //       "Find Dealer",
+      //       style: TextStyle(color: Colors.white),
+      //     )),
+      body: Container(
+        padding: const EdgeInsets.only(bottom: 30),
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 1, 53, 143),
+        ),
+        height: Screens.fullHeight(context),
+        child: Container(
+          padding: const EdgeInsets.only(top: 30),
+          decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 212, 14, 0),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20))),
+          child: Container(
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(20)),
+            child: Column(
+              children: [
+                SizedBox(height: Screens.fullHeight(context) * 0.02),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(
+                      'assets/CoralLogo_Outline.png',
+                      height: 90,
+                    ),
+                    _buildSectionTitle(""),
+                  ],
+                ),
+                const Text(
+                  '       FIND DEALER',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 226, 0, 0),
+                      fontWeight: FontWeight.w900,
+                      fontSize: 16),
+                ),
+                Expanded(
+                  child: Container(
+                    height: Screens.padingHeight(context) * 0.8,
+                    padding: const EdgeInsets.only(
+                        top: 150, left: 10, right: 10, bottom: 10),
+                    decoration: BoxDecoration(
+                        // color: Colors.red,
+                        image: const DecorationImage(
+                          image: AssetImage(
+                              'assets/gray-google-map.jpg'), // Your image asset
+                          fit: BoxFit
+                              .cover, // Adjust fit as needed (cover, contain, etc.)
+                        ),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Container(
+                      decoration: const BoxDecoration(color: Colors.white),
+                      child: Column(
+                        crossAxisAlignment:
+                            CrossAxisAlignment.start, // Align text left
+                        children: [
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          // Title Text
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Row(
+                                children: [
+                                  const Text(
+                                    "Distance in",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                  SizedBox(
+                                    width: 80, // Smaller width
+                                    height: 25, // Smaller height
+                                    child: DropdownButtonFormField<String>(
+                                      borderRadius: BorderRadius.circular(4),
+                                      value: "KM", // Default value
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor:
+                                            Colors.white, // Light background
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 10, vertical: 3),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4),
+                                          borderSide:
+                                              BorderSide.none, // No border
+                                        ),
+                                      ),
+                                      dropdownColor: Colors
+                                          .white, // Background of dropdown items
+                                      icon: const Icon(
+                                        Icons
+                                            .arrow_drop_down, // Custom dropdown arrow
+                                        size:
+                                            16, // Change the size of the dropdown arrow
+                                        color:
+                                            Colors.black, // Set color if needed
+                                      ),
+                                      items: const [
+                                        DropdownMenuItem(
+                                          value: "KM",
+                                          child: Text(
+                                            "km",
+                                            style: TextStyle(fontSize: 13),
+                                          ),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: "M",
+                                          child: Text(
+                                            "meter",
+                                            style: TextStyle(fontSize: 14),
+                                          ),
+                                        ),
+                                      ],
+                                      onChanged: (value) {
+                                        // Handle the selected unit (KM or M)
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 25, // Adjust width of the circle
+                                    height: 25, // Adjust height of the circle
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color:
+                                          Colors.red, // Red circular background
+                                    ),
+                                    child: Center(
+                                      child: IconButton(
+                                        onPressed: () {
+                                          if (context
+                                                  .read<FindDealerController>()
+                                                  .searhfindDeaelerData
+                                                  .length >
+                                              0) {
+                                            context
+                                                .read<FindDealerController>()
+                                                .closeonclick = true;
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DealerMapScreen(
+                                                  allDealers: context
+                                                      .read<
+                                                          FindDealerController>()
+                                                      .findDealerData, // Pass all dealers
+                                                  userLocation: context
+                                                      .read<
+                                                          FindDealerController>()
+                                                      .dealers
+                                                      .firstWhere(
+                                                        (d) =>
+                                                            d["name"]
+                                                                .toString()
+                                                                .toLowerCase() ==
+                                                            "userlocation",
+                                                        orElse: () => {
+                                                          "name": "User",
+                                                          "latitude": 0.0,
+                                                          "longitude": 0.0
+                                                        },
+                                                      ), // Find user location in the list
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                        },
+                                        icon: const Icon(
+                                          Icons.close,
+                                          color: Colors.white,
+                                          size: 18,
+                                        ),
+                                        padding: EdgeInsets.zero,
+                                        constraints: const BoxConstraints(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+
+                          SizedBox(height: Screens.bodyheight(context) * 0.01),
+
+                          // Search Bar
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: TextField(
+                              cursorColor: Colors.white,
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                fillColor: const Color.fromARGB(255, 226, 0, 0),
+                                filled:
+                                    true, // Ensures the fill color is applied
+                                hintText: "Search by location or dealer name",
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 12),
+                                hintStyle: const TextStyle(
+                                    color: Colors.white, fontSize: 15),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide:
+                                      BorderSide.none, // Removes default border
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide
+                                      .none, // Removes focused border color
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide
+                                      .none, // Removes enabled border color
+                                ),
+                              ),
+                              onChanged: (value) {
+                                setState(() {
+                                  context
+                                      .read<FindDealerController>()
+                                      .searchQuery = value.toLowerCase();
+                                });
+                              },
+                            ),
+                          ),
+
+                          // const SizedBox(height: 5), // Add spacing
+                          // Space before list
+
+                          // Dealer List
+
+                          context
+                                      .read<FindDealerController>()
+                                      .findDealerData
+                                      .length >
+                                  0
+                              ? Expanded(
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    controller: context
+                                        .watch<FindDealerController>()
+                                        .scrollController,
+                                    physics: const ClampingScrollPhysics(),
+                                    itemCount: context
+                                        .watch<FindDealerController>()
+                                        .searhfindDeaelerData
+                                        .length,
+                                    itemBuilder: (context, index) {
+                                      final dealer = context
+                                          .read<FindDealerController>()
+                                          .searhfindDeaelerData[index];
+                                      if (dealer.dealerName
+                                              .toLowerCase()
+                                              .contains(context
+                                                  .read<FindDealerController>()
+                                                  .searchQuery) ||
+                                          dealer.dealerName
+                                              .toLowerCase()
+                                              .contains(context
+                                                  .read<FindDealerController>()
+                                                  .searchQuery)) {
+                                        return
+                                            // dealer["name"] != 'userlocation'
+                                            //     ?
+                                            DealerCard(
+                                                context
+                                                        .read<
+                                                            FindDealerController>()
+                                                        .searhfindDeaelerData[
+                                                    index],
+                                                index,
+                                                context
+                                                    .read<
+                                                        FindDealerController>()
+                                                    .findDealerData);
+                                        // : Container();
+                                      }
+                                      return const SizedBox(); // Avoid rendering empty spaces
+                                    },
+                                  ),
+                                )
+                              : Container(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              controller: _scrollController,
-              physics: const ClampingScrollPhysics(),
-              itemCount: dealers.length,
-              itemBuilder: (context, index) {
-                final dealer = dealers[index];
-                if (dealer["name"].toLowerCase().contains(searchQuery) ||
-                    dealer["location"].toLowerCase().contains(searchQuery)) {
-                  return DealerCard(dealer);
-                }
-                return const SizedBox(); // Avoid rendering empty spaces
-              },
-              // children: dealers
-              //     .where((dealer) =>
-              //         dealer["name"].toLowerCase().contains(searchQuery) ||
-              //         dealer["location"].toLowerCase().contains(searchQuery))
-              //     .map((dealer) => DealerCard(dealer))
-              //     .toList(),
-            ),
-          ),
-        ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildSectionTitle(String title) {
+    final theme = Theme.of(context);
+    var groupvalue = context.read<Languagecontroller>().locale.languageCode;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+          child: Text(
+            title,
+            style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 255, 255, 255)),
+          ),
+        ),
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: Screens.width(context) * 0.05),
+          // child: Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     InkWell(
+          //       onTap: () {
+          //         showDialog(
+          //             context: context,
+          //             builder: (context) {
+          //               return AlertDialog(
+          //                 insetPadding: const EdgeInsets.all(10),
+          //                 contentPadding: const EdgeInsets.all(0),
+          //                 shape: RoundedRectangleBorder(
+          //                     borderRadius: BorderRadius.circular(8)),
+          //                 alignment: Alignment.center,
+          //                 content: Container(
+          //                   // height: 300,
+          //                   // color: Colors.amber,
+          //                   width: Screens.width(context) * 0.1,
+          //                   constraints: BoxConstraints(
+          //                       maxHeight: Screens.padingHeight(context) * 0.3),
+          //                   child: Column(
+          //                     mainAxisSize: MainAxisSize.min,
+          //                     children: [
+          //                       Expanded(
+          //                         child: ListView.builder(
+          //                             shrinkWrap: true,
+          //                             // ise:true,
+          //                             itemCount: LanguageModel.length,
+          //                             itemBuilder: (context, i) {
+          //                               var item = LanguageModel[i];
+          //                               return RadioListTile(
+          //                                   value: item.languagecode,
+          //                                   activeColor: theme.primaryColor,
+          //                                   groupValue: groupvalue,
+          //                                   title: Text(item.language!),
+          //                                   subtitle: Text(item.sublanguage!),
+          //                                   onChanged: (val) {
+          //                                     groupvalue = val.toString();
+          //                                     context
+          //                                         .read<Languagecontroller>()
+          //                                         .setlocate(Locale(
+          //                                             item.languagecode!));
+          //                                     Navigator.pop(context);
+          //                                   });
+          //                             }),
+          //                       )
+          //                     ],
+          //                   ),
+          //                 ),
+          //               );
+          //             });
+          //       },
+          //       child: Container(
+          //         alignment: Alignment.topRight,
+          //         width: Screens.width(context) * 0.3,
+          //         height: Screens.fullHeight(context) * 0.04,
+          //         // child: const Icon(
+          //         //   Icons.language,
+          //         //   color: Colors.black,
+          //         //   size: 30,
+          //         // )
+          //         decoration: BoxDecoration(
+          //             color: const Color.fromARGB(255, 248, 248, 248),
+          //             border: Border.all(
+          //                 color: const Color.fromARGB(255, 172, 172, 172),
+          //                 width: 0.5),
+          //             borderRadius: BorderRadius.circular(7)),
+          //         child: Padding(
+          //           padding: EdgeInsets.symmetric(
+          //               vertical: Screens.padingHeight(context) * 0.00),
+          //           child: Row(
+          //             mainAxisAlignment: MainAxisAlignment.center,
+          //             children: [
+          //               const Text(
+          //                 "English",
+          //                 style: TextStyle(
+          //                     fontSize: 16,
+          //                     fontWeight: FontWeight.bold,
+          //                     color: Color.fromARGB(255, 95, 95, 95)),
+          //               ),
+          //               SizedBox(
+          //                 width: Screens.width(context) * 0.02,
+          //               ),
+          //               const Icon(
+          //                 Icons.arrow_drop_down,
+          //                 color: const Color.fromARGB(255, 212, 14, 0),
+          //                 size: 35,
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
+        ),
+      ],
     );
   }
 }
 
 class DealerCard extends StatelessWidget {
-  final Map<String, dynamic> dealer;
+  FindDealerDataModel dealer;
+  final int index;
 
-  const DealerCard(this.dealer);
+  List<FindDealerDataModel> allDealers;
 
-  void _launchMaps(double latitude, double longitude) async {
-    final url =
-        "https://www.google.com/maps/search/?api=1&query=$latitude,$longitude";
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw "Could not launch $url";
-    }
+  DealerCard(this.dealer, this.index, this.allDealers);
+  void navigateToMapScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MapScreen(
+          dealer: dealer,
+          allDealers: allDealers,
+          onclicklist: false,
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(10),
-      child: ListTile(
-        title: Text(dealer["name"],
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("📍 ${dealer["location"]}"),
-            Text("📞 ${dealer["phone"]}"),
-            Row(
-              children: [
-                const Icon(Icons.star, color: Colors.amber),
-                Text(dealer["rating"].toString(),
-                    style: const TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-          ],
+    return InkWell(
+      onTap: () => navigateToMapScreen(context),
+      child: Card(
+        margin: const EdgeInsets.all(1),
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8), // Rounded corners
+          // side: const BorderSide(
+          //     color: Colors.grey, width: 1), // Border color and width
         ),
-        trailing: IconButton(
-          icon: const Icon(Icons.directions, color: Colors.blue),
-          onPressed: () => _launchMaps(dealer["latitude"], dealer["longitude"]),
+        // elevation: 2,
+        // margin: const EdgeInsets.all(10),
+        child: ListTile(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(dealer.dealerName,
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red)),
+              Text(
+                " ${dealer.distance} km",
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Color.fromARGB(255, 16, 57, 122)),
+              ),
+            ],
+          ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                children: [
+                  Text(
+                    "${dealer.dealerName},",
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text("${dealer.dealerContact}"),
+                ],
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                'www.coral.com',
+                style: TextStyle(color: Colors.grey.shade600),
+              ),
+
+              // Row(
+              //   children: [
+              //     Text(dealer["rating"].toString(),
+              //         style: const TextStyle(fontWeight: FontWeight.bold)),
+              //   ],
+              // ),
+            ],
+          ),
+          // trailing: IconButton(
+          //   icon: const Icon(Icons.directions, color: Colors.blue),
+          //   onPressed: () => _launchMaps(dealer["latitude"], dealer["longitude"]),
+          // ),
         ),
       ),
     );

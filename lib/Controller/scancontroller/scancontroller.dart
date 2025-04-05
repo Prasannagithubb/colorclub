@@ -3,8 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:new_one/Models/scanmodel/getcouponmodel.dart';
 import 'package:new_one/Models/scanmodel/gettransmodel.dart';
-import 'package:new_one/Service/getpointsservice.dart';
-import 'package:new_one/Service/scancoupon.dart';
+import 'package:new_one/Service/AddPointsTrans.dart';
+import 'package:new_one/Service/GetCouponDetils.dart';
+
+import '../../Constant/Sharedprfrence.dart';
 
 class Scancontroller extends ChangeNotifier {
   List<Newscancoupon> dataslist = [];
@@ -31,7 +33,8 @@ class Scancontroller extends ChangeNotifier {
     couponList.add(QrModel(qrcode: couponCode));
     log("couponList::${couponList.length}");
     // try {
-    final value = await GetScanCouponApi.getdata(couponList); // Pass couponCode
+    final value = await GetScanCouponApi.getdata(
+        couponList, couponCode); // Pass couponCode
 
     if (value.stcode != null && value.stcode! >= 200 && value.stcode! <= 210) {
       if (value.datalist != null && value.datalist!.isNotEmpty) {
@@ -72,6 +75,9 @@ class Scancontroller extends ChangeNotifier {
         tvalue.stcode! <= 210) {
       if (tvalue.datasource.isNotEmpty) {
         transdatalist = tvalue.datasource;
+
+        await SharedPref.saveMemberId(transdatalist[0].memberId.toString());
+
         isloading = false;
       } else {
         transexception = 'No data found';

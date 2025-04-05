@@ -79,6 +79,6 @@ class RedeemamtDataModel {
   RedeemamtDataModel({required this.redeemamt});
   factory RedeemamtDataModel.fromJson(Map<String, dynamic> json) =>
       RedeemamtDataModel(
-        redeemamt: json["AmountForRedeem"],
+        redeemamt: json["Column1"],
       );
 }

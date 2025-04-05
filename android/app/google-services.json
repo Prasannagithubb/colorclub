@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "250500838381",
+    "project_id": "colourclub-fb9f1",
+    "storage_bucket": "colourclub-fb9f1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250500838381:android:9238e054d3e1d252cc2de4",
+        "android_client_info": {
+          "package_name": "com.example.new_one"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUYmVOzkm9bIdLX0uPh7K8TxJUPDWpcyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

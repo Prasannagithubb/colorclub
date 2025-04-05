@@ -55,14 +55,9 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Mobile number`
+  /// `Mobile No`
   String get Mobilenumber {
-    return Intl.message(
-      'Mobile number',
-      name: 'Mobilenumber',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Mobile No', name: 'Mobilenumber', desc: '', args: []);
   }
 
   /// `Send OTP`
@@ -130,14 +125,9 @@ class S {
     return Intl.message('User Name', name: 'username', desc: '', args: []);
   }
 
-  /// `Whats App Number`
+  /// `Whats App No`
   String get whatsappno {
-    return Intl.message(
-      'Whats App Number',
-      name: 'whatsappno',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Whats App No', name: 'whatsappno', desc: '', args: []);
   }
 
   /// `Notification Via`
@@ -150,9 +140,9 @@ class S {
     );
   }
 
-  /// `Address 1`
-  String get address1 {
-    return Intl.message('Address 1', name: 'address1', desc: '', args: []);
+  /// `Address`
+  String get address {
+    return Intl.message('Address', name: 'address', desc: '', args: []);
   }
 
   /// `Via Google`
@@ -200,10 +190,15 @@ class S {
     return Intl.message('Points', name: 'points', desc: '', args: []);
   }
 
-  /// `Verification Sucessfull!`
+  /// `Points :`
+  String get points1 {
+    return Intl.message('Points :', name: 'points1', desc: '', args: []);
+  }
+
+  /// `Verification Sucessfull`
   String get verificationsucessfull {
     return Intl.message(
-      'Verification Sucessfull!',
+      'Verification Sucessfull',
       name: 'verificationsucessfull',
       desc: '',
       args: [],
@@ -440,6 +435,401 @@ class S {
     return Intl.message(
       'Scanned QR Code',
       name: 'scaneedqrcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MY REDEEMS`
+  String get myredeems {
+    return Intl.message('MY REDEEMS', name: 'myredeems', desc: '', args: []);
+  }
+
+  /// `AVALIABLE POINTS`
+  String get avaliablepoints {
+    return Intl.message(
+      'AVALIABLE POINTS',
+      name: 'avaliablepoints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `REDEEM POINTS`
+  String get redeempoints1 {
+    return Intl.message(
+      'REDEEM POINTS',
+      name: 'redeempoints1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EQUIVALENT AMOUNT`
+  String get equivalentamount {
+    return Intl.message(
+      'EQUIVALENT AMOUNT',
+      name: 'equivalentamount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message('Submit', name: 'submit', desc: '', args: []);
+  }
+
+  /// `REDEEM HISTORY`
+  String get redeemhistory {
+    return Intl.message(
+      'REDEEM HISTORY',
+      name: 'redeemhistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `REDEEM ON`
+  String get redeemon {
+    return Intl.message('REDEEM ON', name: 'redeemon', desc: '', args: []);
+  }
+
+  /// `Dealer Name`
+  String get dealername {
+    return Intl.message('Dealer Name', name: 'dealername', desc: '', args: []);
+  }
+
+  /// `MY POINTS`
+  String get mypoints {
+    return Intl.message('MY POINTS', name: 'mypoints', desc: '', args: []);
+  }
+
+  /// `Confirm Logout`
+  String get confirmlogout {
+    return Intl.message(
+      'Confirm Logout',
+      name: 'confirmlogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to log out?`
+  String get areyousureyouwanttologout {
+    return Intl.message(
+      'Are you sure you want to log out?',
+      name: 'areyousureyouwanttologout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scaned Points`
+  String get scanedpoints {
+    return Intl.message(
+      'Scaned Points',
+      name: 'scanedpoints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coupon Code :`
+  String get couponcode {
+    return Intl.message(
+      'Coupon Code :',
+      name: 'couponcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Earned Amount :`
+  String get earnedamount {
+    return Intl.message(
+      'Earned Amount :',
+      name: 'earnedamount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Item Name :`
+  String get itemname {
+    return Intl.message('Item Name :', name: 'itemname', desc: '', args: []);
+  }
+
+  /// `Date of Packed :`
+  String get dateofpacked {
+    return Intl.message(
+      'Date of Packed :',
+      name: 'dateofpacked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of Expire :`
+  String get dateofexpire {
+    return Intl.message(
+      'Date of Expire :',
+      name: 'dateofexpire',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MY TRANSACTIONS`
+  String get mytransaction1 {
+    return Intl.message(
+      'MY TRANSACTIONS',
+      name: 'mytransaction1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `TRANSACTION HISTORY`
+  String get transactionhistory {
+    return Intl.message(
+      'TRANSACTION HISTORY',
+      name: 'transactionhistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message('All', name: 'all', desc: '', args: []);
+  }
+
+  /// `Redemption`
+  String get redemption {
+    return Intl.message('Redemption', name: 'redemption', desc: '', args: []);
+  }
+
+  /// `MY DEALER PARTNER`
+  String get mydealerpartner1 {
+    return Intl.message(
+      'MY DEALER PARTNER',
+      name: 'mydealerpartner1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by location or dealer name`
+  String get searchbylocationordealername {
+    return Intl.message(
+      'Search by location or dealer name',
+      name: 'searchbylocationordealername',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FIND DEALER`
+  String get finddealer1 {
+    return Intl.message('FIND DEALER', name: 'finddealer1', desc: '', args: []);
+  }
+
+  /// `Distance in`
+  String get distancein {
+    return Intl.message('Distance in', name: 'distancein', desc: '', args: []);
+  }
+
+  /// `Km`
+  String get km {
+    return Intl.message('Km', name: 'km', desc: '', args: []);
+  }
+
+  /// `Meter`
+  String get meter {
+    return Intl.message('Meter', name: 'meter', desc: '', args: []);
+  }
+
+  /// `Share Via WhatsApp`
+  String get shareviawhatsapp {
+    return Intl.message(
+      'Share Via WhatsApp',
+      name: 'shareviawhatsapp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For Every Referal,YOU BOTH`
+  String get foreveryreferalyouboth {
+    return Intl.message(
+      'For Every Referal,YOU BOTH',
+      name: 'foreveryreferalyouboth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy`
+  String get copy {
+    return Intl.message('Copy', name: 'copy', desc: '', args: []);
+  }
+
+  /// `Refer And Get Reward`
+  String get referandgetreward {
+    return Intl.message(
+      'Refer And Get Reward',
+      name: 'referandgetreward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chose Product`
+  String get choseproduct {
+    return Intl.message(
+      'Chose Product',
+      name: 'choseproduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PRODUCT COMPLAINS`
+  String get productcomplains1 {
+    return Intl.message(
+      'PRODUCT COMPLAINS',
+      name: 'productcomplains1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Complaint Details`
+  String get entercomplaintdetails {
+    return Intl.message(
+      'Enter Complaint Details',
+      name: 'entercomplaintdetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Describee Your Complaints`
+  String get describeyourcomplaints {
+    return Intl.message(
+      'Describee Your Complaints',
+      name: 'describeyourcomplaints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attach Image`
+  String get attchimage {
+    return Intl.message('Attach Image', name: 'attchimage', desc: '', args: []);
+  }
+
+  /// `register Complaints`
+  String get registercomplaints {
+    return Intl.message(
+      'register Complaints',
+      name: 'registercomplaints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NEW REGISTER`
+  String get newregister1 {
+    return Intl.message(
+      'NEW REGISTER',
+      name: 'newregister1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SMS`
+  String get sms {
+    return Intl.message('SMS', name: 'sms', desc: '', args: []);
+  }
+
+  /// `Whats App`
+  String get whatsapp {
+    return Intl.message('Whats App', name: 'whatsapp', desc: '', args: []);
+  }
+
+  /// `State`
+  String get state {
+    return Intl.message('State', name: 'state', desc: '', args: []);
+  }
+
+  /// `Select state`
+  String get selectstate {
+    return Intl.message(
+      'Select state',
+      name: 'selectstate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email ID`
+  String get emailid {
+    return Intl.message('Email ID', name: 'emailid', desc: '', args: []);
+  }
+
+  /// `Uplode`
+  String get uplode {
+    return Intl.message('Uplode', name: 'uplode', desc: '', args: []);
+  }
+
+  /// `Selfi`
+  String get selfi {
+    return Intl.message('Selfi', name: 'selfi', desc: '', args: []);
+  }
+
+  /// `REGISTER`
+  String get register1 {
+    return Intl.message('REGISTER', name: 'register1', desc: '', args: []);
+  }
+
+  /// `Enter OTP`
+  String get enterotp {
+    return Intl.message('Enter OTP', name: 'enterotp', desc: '', args: []);
+  }
+
+  /// `In Valid OTP`
+  String get invalidotp {
+    return Intl.message('In Valid OTP', name: 'invalidotp', desc: '', args: []);
+  }
+
+  /// `Try Again`
+  String get tryagain {
+    return Intl.message('Try Again', name: 'tryagain', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `From Date`
+  String get fromdate {
+    return Intl.message('From Date', name: 'fromdate', desc: '', args: []);
+  }
+
+  /// `To Date`
+  String get todate {
+    return Intl.message('To Date', name: 'todate', desc: '', args: []);
+  }
+
+  /// `Search By Date`
+  String get searchbydate {
+    return Intl.message(
+      'Search By Date',
+      name: 'searchbydate',
       desc: '',
       args: [],
     );

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
+import 'package:new_one/Constant/AppConstant.dart';
 import 'package:new_one/Models/scanmodel/gettransmodel.dart';
 
 class AddPointTransApi {
@@ -12,9 +13,12 @@ class AddPointTransApi {
     try {
       final response = await http.post(
         Uri.parse(
-            "http://dev.sellerkit.in:5468/api/Coupon/v1/AddPointTrans?transtype=test&transip=test"),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode(transactions.map((e) => e.toJson()).toList()),
+            "http://dev.sellerkit.in:5468/api/Coupon/v1/AddPointTrans?transtype=testing&transip=testing&createlastip=testing"),
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'bearer ${AppConstant.token}'
+        },
+        body: json.encode(transactions.map((e) => e.toJson()).toList()),
       );
 
       log("Request Body: ${jsonEncode(transactions.map((e) => e.toJson()).toList())}");
